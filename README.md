@@ -14,6 +14,7 @@ This is my simplified version of your web page, modeled from the video you share
 
 In the script section of the same page, this translates to a POST request:
 
+<!--
     <script>
         function sendData(data) {
             fetch('/send_data', {
@@ -23,6 +24,7 @@ In the script section of the same page, this translates to a POST request:
                 },
                 body: JSON.stringify({ data: data })
             })
+-->
 
 This request is then handled in the app.py file, which contains two relevant routes: /send_data and send_to_server. The send_data file fields the POST request, packages up the book title and passes it to send_to_server to pass to my microservice. 
 
