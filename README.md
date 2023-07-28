@@ -6,7 +6,11 @@ How to programmatically request data:
 index.html file:
 This is my simplified version of your web page, modeled from the video you shared. For each book, I'm recommending you add a button with the book's title as the data that is sent upon pushing it via a POST request. Example: 
 
-# <li>Little Women <button onclick="sendData('Little Women')">Summary</button></li>
+     <p>Sample version of app for testing micro service.</p>
+    <ul>
+        <li>Little Women <button onclick="sendData('Little Women')">Summary</button></li>
+        <li>The Little Prince <button onclick="sendData('The Little Prince')">Summary</button></li>
+    </ul>
 
 In the script section of the same page, this translates to a POST request:
 
