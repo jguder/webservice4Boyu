@@ -42,7 +42,7 @@ I know you used flask. To use this code in your app.py, import Flask, render_tem
 
 wiki-server.py
 This is my micro service. I recommend running it in a virtual environment. After creating the virtual environment (virtualenv venv), install flask and the wikipedia-api. Then import wikipediaapi and socket (which is part of the python standard library). 
-The file implements a socket server. Within this file, the only change you need to make is to insert your email address where indicated in the file. The email address is required by wikipediaapi so they can track how many accesses you make in a day. There is a limit of 1000 per day. If you are not running on localhost or if you prefer to use a different port, you would need to change those number in this file as well as in your app.py file of your flask application.
+The file implements a socket server. Within this file, the only change you need to make is to insert your email address where indicated in the file. The email address is required by wikipediaapi so they can track how many accesses you make in a day. THIS IS REALLY THE ONLY CHANGE YOU NEED TO MAKE TO THIS FILE: ENTER YOUR EMAIL ADDRESS ON LINE 14. There is a limit of 1000 per day. If you are not running on localhost or if you prefer to use a different port, you would need to change those number in this file as well as in your app.py file of your flask application.
 
 We can talk through all of these items, but I hope this readme helps.
 
