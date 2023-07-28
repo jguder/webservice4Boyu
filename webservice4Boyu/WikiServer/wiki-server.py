@@ -13,7 +13,7 @@ def handle_client(conn):
         if not data:
             break
         query = data.decode('utf-8')
-        wiki_wiki = wikipediaapi.Wikipedia('guderj@oregonstate.edu')
+        wiki_wiki = wikipediaapi.Wikipedia('youraddress@oregonstate.edu')
         page = wiki_wiki.page(query)
         if page.exists():
             retdata = "Summary: {}\n".format(page.summary)
