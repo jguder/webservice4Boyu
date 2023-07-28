@@ -5,118 +5,32 @@ How to programmatically request data:
 
 index.html file:
 This is my simplified version of your web page, modeled from the video you shared. For each book, I'm recommending you add a button with the book's title as the data that is sent upon pushing it via a POST request. Example: 
-<img width="841" alt="Screenshot 2023-07-28 at 4 18 37 PM" src="https://github.com/jguder/webservice4Boyu/assets/59512278/b90bfe03-b668-4635-b4ca-1f31162af971">
 
-     <p>Sample version of app for testing micro service.</p>
-    <ul>
-        <li>Little Women <button onclick="sendData('Little Women')">Summary</button></li>
-        <li>The Little Prince <button onclick="sendData('The Little Prince')">Summary</button></li>
-    </ul>
+<img width="841" alt="Screenshot 2023-07-28 at 4 18 37 PM" src="https://github.com/jguder/webservice4Boyu/assets/59512278/b90bfe03-b668-4635-b4ca-1f31162af971">
 
 In the script section of the same page, this translates to a POST request:
 
-<!--
-    <script>
-        function sendData(data) {
-            fetch('/send_data', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ data: data })
-            })
--->
+<img width="493" alt="Screenshot 2023-07-28 at 4 19 13 PM" src="https://github.com/jguder/webservice4Boyu/assets/59512278/74cca468-99cc-41b6-8290-c14b68562486">
+
 
 This request is then handled in the app.py file, which contains two relevant routes: /send_data and send_to_server. The send_data file fields the POST request, packages up the book title and passes it to send_to_server to pass to my microservice. 
 
-@app.route('/send_data', methods=['POST'])
-def send_data():
-    data = request.get_json()
-    if data and 'data' in data:
-        book_title = data['data']
-        retdata = send_to_server(book_title)
-        return jsonify({'success': True, 'data': retdata})
-    else:
-        return jsonify({'success': False, 'error': 'No data provided.'})
+<img width="723" alt="Screenshot 2023-07-28 at 4 19 28 PM" src="https://github.com/jguder/webservice4Boyu/assets/59512278/c7514a65-03c3-41f6-a799-e9cf7066e83e">
+
 
 The send_to_server route establishes the socket connection with my server, passes the data, and then receives the data back as well.
 
-def send_to_server(data):
-    HOST = "127.0.0.1"  # The server's hostname or IP address
-    PORT = 65432  # The port used by the server
-
-    # Establish a socket connection and send the data
-    try:
-        #SENDS DATA VIA OPEN SOCKET
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-            sock.connect((HOST, PORT))
-            sock.sendall(data.encode('utf-8'))
-             #RECEIVES DATA BACK FROM WEB SERVICE AND RETURNS IT
-            retdata = sock.recv(4096)   
-            retdata = retdata.decode('utf-8')
-            return retdata
-    except Exception as e:
-        print(f"Error sending data: {str(e)}").
+<img width="647" alt="Screenshot 2023-07-28 at 4 19 54 PM" src="https://github.com/jguder/webservice4Boyu/assets/59512278/3f4f682b-31fe-41be-a02b-cc7062c61a6f">
 
 How to programmatically receive data:
 
-After it returns the data to send_data (the retdata = sock.recv(4096) above is when it receives the data back from the web socket, and return retdata is the returning to send_date), send_data returns it via jsonify statement to the requesting html page (index.html in my example code). In this file, a modal manages the data and displays it via popup.
+After it returns the data to send_data (the retdata = sock.recv(4096) above is when it receives the data back from the web socket, and return retdata is the returning to send_date), send_data returns it via jsonify statement to the requesting html page (index.html in my example code). In this file, a modal manages the data and displays it via popup. The following is the modal code itself.
+<img width="1043" alt="Screenshot 2023-07-28 at 5 21 40 PM" src="https://github.com/jguder/webservice4Boyu/assets/59512278/10159055-68d1-48a8-b22d-78e14a0dea29">
 
-<div class="modal" id="resultsModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Results</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p id="modalContent"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+And this code is the modal sending and receiving data to populate.
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<img width="705" alt="Screenshot 2023-07-28 at 5 21 51 PM" src="https://github.com/jguder/webservice4Boyu/assets/59512278/289abe00-3a91-42d7-a340-eea963b9744e">
 
-    <script>
-        function sendData(data) {
-            fetch('/send_data', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ data: data })
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    console.error('Failed to send data.');
-                }
-            })
-            .then(data => {
-                // Check if data was successfully received
-                if (data && data.success && data.data) {
-                    // Populate the modal with the received data
-                    document.getElementById('modalContent').textContent = data.data;
-                    // Show the modal
-                    $('#resultsModal').modal('show');
-                } else {
-                    console.error('Invalid data received.');
-                }
-            })
-            .catch(error => {
-                console.error('Error sending data:', error);
-            });
-        }
-    </script>
 
 Other points to be aware of:
 I developed the modal (contrived pop-up looking display) with bootstrap, so there are some bootstrap elements to be aware of in this code. First ensure you include the bootstrap css in the page as I have. 
