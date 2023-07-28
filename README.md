@@ -5,6 +5,7 @@ How to programmatically request data:
 
 index.html file:
 This is my simplified version of your web page, modeled from the video you shared. For each book, I'm recommending you add a button with the book's title as the data that is sent upon pushing it via a POST request. Example: 
+<img width="841" alt="Screenshot 2023-07-28 at 4 18 37 PM" src="https://github.com/jguder/webservice4Boyu/assets/59512278/b90bfe03-b668-4635-b4ca-1f31162af971">
 
      <p>Sample version of app for testing micro service.</p>
     <ul>
