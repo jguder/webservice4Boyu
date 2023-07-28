@@ -127,4 +127,4 @@ We can talk through all of these items, but I hope this readme helps.
 
 UML Sequence diagram follows.
 ![image](https://github.com/jguder/webservice4Boyu/assets/59512278/01d54899-cfa2-4bd7-8d06-8dcf3f011b4e)# 
-Poke Player (Betting Round).jpg
+
