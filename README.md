@@ -25,12 +25,12 @@ The send_to_server route establishes the socket connection with my server, passe
 How to programmatically receive data:
 
 After it returns the data to send_data (the retdata = sock.recv(4096) above is when it receives the data back from the web socket, and return retdata is the returning to send_date), send_data returns it via jsonify statement to the requesting html page (index.html in my example code). In this file, a modal manages the data and displays it via popup. The following is the modal code itself.
+
 <img width="1043" alt="Screenshot 2023-07-28 at 5 21 40 PM" src="https://github.com/jguder/webservice4Boyu/assets/59512278/10159055-68d1-48a8-b22d-78e14a0dea29">
 
 And this code is the modal sending and receiving data to populate.
 
 <img width="705" alt="Screenshot 2023-07-28 at 5 21 51 PM" src="https://github.com/jguder/webservice4Boyu/assets/59512278/289abe00-3a91-42d7-a340-eea963b9744e">
-
 
 Other points to be aware of:
 I developed the modal (contrived pop-up looking display) with bootstrap, so there are some bootstrap elements to be aware of in this code. First ensure you include the bootstrap css in the page as I have. 
