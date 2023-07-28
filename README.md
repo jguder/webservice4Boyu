@@ -1,4 +1,4 @@
-![image](https://github.com/jguder/webservice4Boyu/assets/59512278/01d54899-cfa2-4bd7-8d06-8dcf3f011b4e)# webservice4Boyu
+webservice4Boyu
 Web service and sample implementation for Boyu to integrate. Please note that all of what is described below is contained within this git's code and is available to you. The code in this git is exactly what I used to model the micro service in my video, so it should be 100% usable for you to copy into your own application, and it should all work.
 
 How to programmatically request data:
@@ -126,4 +126,5 @@ The file implements a socket server. Within this file, the only change you need 
 We can talk through all of these items, but I hope this readme helps.
 
 UML Sequence diagram follows.
+![image](https://github.com/jguder/webservice4Boyu/assets/59512278/01d54899-cfa2-4bd7-8d06-8dcf3f011b4e)# 
 Poke Player (Betting Round).jpg
