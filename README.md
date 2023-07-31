@@ -30,7 +30,7 @@ After it returns the data to send_data (the retdata = sock.recv(4096) above is w
 
 And this code is the modal sending and receiving data to populate.
 
-<img width="705" alt="Screenshot 2023-07-28 at 5 21 51 PM" src="https://github.com/jguder/webservice4Boyu/assets/59512278/289abe00-3a91-42d7-a340-eea963b9744e">
+[modal code](https://github.com/jguder/webservice4Boyu/assets/59512278/289abe00-3a91-42d7-a340-eea963b9744e)
 
 Other points to be aware of:
 I developed the modal (contrived pop-up looking display) with bootstrap, so there are some bootstrap elements to be aware of in this code. First ensure you include the bootstrap css in the page as I have. 
