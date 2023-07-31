@@ -48,7 +48,7 @@ We can talk through all of these items, but I hope this readme helps.
 
 UML Sequence diagram follows.
 
-(./UML.png)
+[UML diagram](./UML.png)
 
 <img width="693" alt="Screenshot 2023-07-28 at 5 28 04 PM" src="https://github.com/jguder/webservice4Boyu/assets/59512278/2fc55650-a4ba-4289-9a51-da0c11083e51">
 
